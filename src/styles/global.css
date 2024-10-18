@@ -7,3 +7,17 @@
 a {
     text-decoration: none;
 }
+
+nav {
+    background-color: orange;
+    color: antiquewhite;
+    height: 40px;
+    padding: 10px;
+
+    a {
+        color: antiquewhite;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 20px;
+    }
+}

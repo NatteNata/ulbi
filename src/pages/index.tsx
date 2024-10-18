@@ -1,17 +1,17 @@
-import Link from "next/link";
+import A from "../components/A";
 
 export default function Index() {
     return (
         <>
             <nav>
                 <ul>
-                    <Link href={'/'}>Главная</Link>
-                    <Link href={'/users'}>Пользователи</Link>
+                    <A href={'/'} text={'Главная'}/>
+                    <A href={'/users'} text={'Пользователи'}/>
                 </ul>
             </nav>
-            <div>
-                главная страница
-            </div>
+            <h1>
+                Главная страница
+            </h1>
         </>
     );
 };
