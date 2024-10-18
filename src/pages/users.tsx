@@ -1,31 +1,12 @@
-import {useEffect, useState} from "react";
 import A from "../components/A";
+import {Context} from "node:vm";
 
 type User = {
     id: number
     name: string
 }
 
-export default function Users() {
-
-    const [users, setUsers] = useState<User[]>([
-        {id: 1, name: 'Helen'},
-        {id: 2, name: 'Mathew'},
-    ])
-
-    useEffect(() => {
-
-        const getData = async () => {
-            try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/users')
-                const data = await response.json()
-                setUsers(data)
-            } catch (error) {
-                console.log(`YOU've got some error on your hands!`)
-            }
-        }
-        getData()
-    }, []);
+export default function Users({users}: Context) {
 
     return (
         <>
@@ -42,3 +23,15 @@ export default function Users() {
         </>
     );
 };
+
+export async function getStaticProps() {
+
+    const response = await fetch('https://jsonplaceholder.typicode.com/users')
+    const users = await response.json()
+
+    return {
+        props: {
+            users,
+        },
+    }
+}
