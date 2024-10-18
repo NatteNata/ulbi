@@ -1,4 +1,3 @@
-import {useRouter} from "next/router";
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 
 export default function User({user}) {

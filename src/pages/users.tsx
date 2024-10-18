@@ -1,12 +1,16 @@
 import A from "../components/A";
-import {Context} from "node:vm";
+import {GetStaticProps} from 'next'
 
 type User = {
     id: number
     name: string
 }
 
-export default function Users({users}: Context) {
+type UsersProps = {
+    users: User[]
+}
+
+export default function Users({users}: UsersProps) {
 
     return (
         <>
@@ -24,7 +28,7 @@ export default function Users({users}: Context) {
     );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<UsersProps> = async () => {
 
     const response = await fetch('https://jsonplaceholder.typicode.com/users')
     const users = await response.json()
